@@ -1,5 +1,6 @@
 gem "activesupport"
 gem "activemodel"
+gem "rails-observers"
 
 require "active_support/core_ext/class/attribute_accessors"
 require "active_support/core_ext/hash/indifferent_access"
@@ -13,6 +14,7 @@ require "active_support/core_ext/class/attribute"
 require "active_support/json"
 
 require "active_model"
+require 'rails/observers/active_model/active_model'
 
 module SuperModel
   class SuperModelError < StandardError; end
