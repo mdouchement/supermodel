@@ -1,16 +1,11 @@
 module SuperModel
   module Validations
     class UniquenessValidator < ActiveModel::EachValidator
-      attr_reader :klass
-      
+
       def validate_each(record, attribute, value)
-        alternate = klass.find_by_attribute(attribute, value)
+        alternate = record.class.find_by_attribute(attribute, value)
         return unless alternate
-        record.errors.add(attribute, "must be unique", :default => options[:message])
-      end
-      
-      def setup(klass)
-        @klass = klass
+        record.errors.add(attribute, 'must be unique', default: options[:message])
       end
     end
 

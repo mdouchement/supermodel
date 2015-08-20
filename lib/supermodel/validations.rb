@@ -1,3 +1,5 @@
+require 'supermodel/validations/uniqueness'
+
 module SuperModel
   module Validations
     extend  ActiveSupport::Concern
@@ -6,7 +8,7 @@ module SuperModel
     included do
       alias_method_chain :save, :validation
     end
-  
+
     def save_with_validation(options = nil)
       perform_validation = case options
       when Hash
@@ -16,7 +18,7 @@ module SuperModel
       else
         options
       end
-    
+
       if perform_validation && valid? || !perform_validation
         save_without_validation
         true
@@ -28,5 +30,3 @@ module SuperModel
     end
   end
 end
-
-require "supermodel/validations/uniqueness"
